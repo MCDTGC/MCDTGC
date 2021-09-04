@@ -1,0 +1,945 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.Linq;
+
+using System.Text;
+
+using System.Threading.Tasks;
+
+
+
+namespace The_Game
+
+{
+
+    class Program
+
+    {
+
+        public static void See(int money, int healthy, int buttle)
+
+        {
+
+            Console.WriteLine("n你还有:钱{0},健康{1},子弹{2}", money, healthy, buttle);
+
+            Console.ReadLine();
+
+        }
+
+        public static void See(int money, int healthy, int buttle, int bag)
+
+        {
+
+            Console.WriteLine("你还有:钱{0},健康{1},子弹{2},袋子", money, healthy, buttle, bag);
+
+            Console.ReadLine();
+
+        }
+
+        public static void See(int money, int bank, int friend, string a)
+
+        {
+
+            Console.WriteLine("你还有:钱{0},银行{1}座,朋友{2}个", money, bank, friend);
+
+            Console.ReadLine();
+
+        }
+
+        public static void See(string a)
+
+        {
+
+            Console.WriteLine(a);
+
+            Console.ReadLine();
+
+        }
+
+
+
+        private static void Game()
+
+        {
+
+            Console.WriteLine("请输入模式，经济的 j 军事的 n");
+
+            string s1 = Console.ReadLine();
+
+            while (true)
+
+            {
+
+                if (s1 == "j")
+
+                {
+
+                    Praject();
+
+                    return;
+
+                }
+
+                else if (s1 == "n")
+
+                {
+
+                    Praject2();
+
+                    return;
+
+                }
+
+                else
+
+                {
+
+                    Console.WriteLine("输入有误");
+
+                    Console.ReadLine();
+
+
+
+                }
+
+
+
+            }
+
+        }
+
+
+
+        private static void Praject()
+
+        {
+
+           while(true)
+
+            {
+
+                Console.WriteLine("请选择你的身份 普通人 p ，小偷 x");
+
+                string o1 = Console.ReadLine();
+
+                if (o1 == "p")
+
+                {
+
+                    Model1();
+
+                    return;
+
+
+
+                }
+
+                else if (o1 == "x")
+
+                { 
+
+                    Model2();
+
+                    return;
+
+                }
+
+                else
+
+                    See("输入有误");
+
+            }
+
+                   
+
+        }
+
+        private static void Praject2()
+
+        {
+
+            Random ran = new Random();
+
+            int RandKey = ran.Next(1, 2);
+
+            switch (RandKey)
+
+            {
+
+                case 1:
+
+                    Model3();
+
+                    break;
+
+                case 2:
+
+                    Model4();
+
+                    break;
+
+            }
+
+        }
+
+
+
+        private static void Model1()
+
+        {
+
+            int money, healthy, buttle;
+
+            money = 50;
+
+            healthy = 60;
+
+            buttle = 10;
+
+            for (int i = 1; i < 20; i++)
+
+            {
+
+                Model11(ref money, ref buttle, ref healthy);
+
+                See(money, healthy, buttle);
+
+                int u = i;
+
+                u = 20 - i;
+
+                Console.WriteLine("还有{0}天结束", u);
+
+                Console.WriteLine("");
+
+                if (healthy <= 0)
+
+                {
+
+                    Console.WriteLine("你死了");
+
+                    Console.ReadLine();
+
+                    return;
+
+                }
+
+                else if (money < 0)
+
+                {
+
+                    Console.WriteLine("你破产");
+
+                    Console.ReadLine();
+
+                    return;
+
+
+
+                }
+
+            }
+
+            Console.WriteLine("你赢了");
+
+            Console.ReadLine();
+
+
+
+
+
+        }
+
+        private static void Model2()
+
+        {
+
+            int money, healthy, buttle, bag;
+
+            money = 50;
+
+            healthy = 60;
+
+            buttle = 10;
+
+            bag = 2;
+
+
+
+            for (int i = 0; i == 9; i++)
+
+            {
+
+                Model12(ref money, ref buttle, ref healthy, ref bag);
+
+                See(money, healthy, buttle, bag);
+
+                if (healthy <= 0)
+
+                {
+
+                    Console.WriteLine("你死了");
+
+                    Console.ReadLine();
+
+                    return;
+
+                }
+
+            }
+
+            Console.WriteLine("你赢了");
+
+            Console.ReadLine();
+
+
+
+        }
+
+        private static void Model3()
+
+        {
+
+            int money, bank, friend;
+
+            money = 50;
+
+            bank = 60;
+
+            friend = 10;
+
+            string a = "w";
+
+            for (int i = 0; i == 9; i++)
+
+            {
+
+                Model21(ref money, ref bank, ref friend);
+
+                See(money, bank, friend);
+
+                if (money <= 0)
+
+                {
+
+                    Console.WriteLine("你破产了");
+
+                    Console.ReadLine();
+
+                    return;
+
+                }
+
+                else if (bank <= 0)
+
+                {
+
+                    Console.WriteLine("你破产了");
+
+                    Console.ReadLine();
+
+                    return;
+
+                }
+
+            }
+
+            Console.WriteLine("你赢了");
+
+            Console.ReadLine();
+
+        }
+
+        private static void Model4()
+
+        {
+
+            Console.WriteLine("尽请期待");
+
+            Console.ReadLine();
+
+
+
+        }
+
+
+
+        private static void Model11(ref int money, ref int buttle, ref int healthy)
+
+        {
+
+            See("现在你是一个想创业的普通人");
+
+            Random ran = new Random();
+
+            int RandKey = ran.Next(1, 9);
+
+            switch (RandKey)
+
+            {
+
+                case 1:
+
+                    See("你遇到了一个坏人，他抢了你的钱,还把你弄伤了");
+
+                    healthy -= 20;
+
+                    money -= 50;
+
+                    break;
+
+                case 2:
+
+                    See("你在马路上见到一袋钱");
+
+                    money += 50;
+
+                    break;
+
+                case 3:
+
+                    Console.WriteLine("你遇到了坏人，要打么 y or n");
+
+                    string s1 = Console.ReadLine();
+
+                    while (true)
+
+                    {
+
+                        if (s1 == "y" && buttle >= 20)
+
+                        {
+
+                            See("你打败他们了，花费了30颗子弹，攥了50元");
+
+                            buttle -= 30;
+
+                            money += 50;
+
+                            return;
+
+                        }
+
+                        else if (s1 == "y" && buttle < 20)
+
+                        {
+
+                            See("你没子弹了，被他打了");
+
+                            healthy -= 30;
+
+                            return;
+
+                        }
+
+                        else if (s1 == "n")
+
+                        {
+
+                            See("你被打了");
+
+                            healthy -= 30;
+
+                            return;
+
+                        }
+
+                        else
+
+                        {
+
+                            See("输入有误");
+
+
+
+                        }
+
+                    }
+
+                    break;
+
+                case 4:
+
+                    while (true)
+
+                    {
+
+                        Console.WriteLine("欢迎来到前不着村，后不着店");
+
+                        Console.WriteLine("子弹5元10个，药瓶（回十格）10元");
+
+                        Console.WriteLine("药瓶（回30格）20元，药瓶（回50格）40元");
+
+                        Console.WriteLine("需购买请分别输入 b t m f退出 e");
+
+                        string s5 = Console.ReadLine();
+
+                        See(money, healthy, buttle);
+
+                        if (s5 == "b")
+
+                        {
+
+                            if (money >= 5)
+
+                            {
+
+                                See("ok");
+
+                                buttle += 10;
+
+                                money -= 5;
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+                            else if (money <= 5)
+
+                            {
+
+                                See("没钱了");
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+                        }
+
+                        else if (s5 == "t")
+
+                        {
+
+                            if (money >= 10)
+
+                            {
+
+                                See("ok");
+
+                                healthy += 10;
+
+                                money -= 10;
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+                            else if (money <= 10)
+
+                            {
+
+                                See("没钱了");
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+
+
+                        }
+
+                        else if (s5 == "m")
+
+                        {
+
+                            if (money >= 20)
+
+                            {
+
+                                See("ok");
+
+                                healthy += 20;
+
+                                money -= 30;
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+                            else if (money <= 30)
+
+                            {
+
+                                See("没钱了");
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+
+
+                        }
+
+                        else if (s5 == "f")
+
+                        {
+
+                            if (money >= 40)
+
+                            {
+
+                                See("ok");
+
+                                healthy += 50;
+
+                                money -= 40;
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+                            else if (money <= 40)
+
+                            {
+
+                                See("没钱了");
+
+                                See(money, healthy, buttle);
+
+
+
+                            }
+
+
+
+                        }
+
+                        else if (s5 == "e")
+
+                            return;
+
+                        else
+
+                            See("输入错误");
+
+                    }
+
+                case 5:
+
+                    See("你遇到了一个好心人，他给你疗了伤");
+
+                    if (healthy <= 100)
+
+                    {
+
+                        healthy = 100;
+
+                    }
+
+                    break;
+
+                case 6:
+
+                    Console.WriteLine("你遇到了一位慈善家，他说，只要你捐他钱，他就会有回报，但是有风险50%哦");
+
+                    Console.WriteLine("你捐他钱么 y or n");
+
+                    string s2 = Console.ReadLine();
+
+                    if (s2 == "y")
+
+                    {
+
+                        See(money, healthy, buttle);
+
+                        Console.WriteLine("请输入你要捐钱的钱数");
+
+                        s2 = Console.ReadLine();
+
+                        int i1 = int.Parse(s2);
+
+                        int i2;
+
+                        money = money - i1;
+
+                        i2 = i1 * 2;
+
+                        money = money + i2;
+
+                        See("我赚钱了，这些钱是给你的，利润是原来的2倍");
+
+                    }
+
+                    else if (s2 == "n")
+
+                    {
+
+                        See("哦，对不起打扰了.....。“过了一会”我告诉你我赚了，利润是20成（本钱乘以2）");
+
+                    }
+
+                    break;
+
+                case 7:
+
+                    Console.WriteLine("你遇到了一位慈善家，他说，只要你捐他钱，他就会有回报，但是有风险50%哦");
+
+                    Console.WriteLine("你捐他钱么 y or n");
+
+                    string s3 = Console.ReadLine();
+
+                    if (s3 == "y")
+
+                    {
+
+                        See(money, healthy, buttle);
+
+                        Console.WriteLine("请输入你要捐钱的钱数");
+
+                        s2 = Console.ReadLine();
+
+                        int i1 = int.Parse(s2);
+
+                        money = money - i1;
+
+                        See("我赔了，连本都没有了，对不起");
+
+                    }
+
+                    else if (s3 == "n")
+
+                    {
+
+                        See("哦，对不起打扰了.....。“过了一会”我告诉我赔了，幸亏你没投资");
+
+                    }
+
+                    break;
+
+                case 8:
+
+                    See("今天啥都没有");
+
+                    break;
+
+                case 9:
+
+                    See("今天啥都没有");
+
+                    break;
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+        private static void Model12(ref int money, ref int buttle, ref int healthy, ref int bag)
+
+        {
+
+
+
+            See("现在你是一个小偷");
+
+            Random ran = new Random();
+
+            int RandKey = ran.Next(1, 9);
+
+            Random ran1 = new Random();
+
+            int RandKey1 = ran.Next(1, 9);
+
+            switch (RandKey1)
+
+            {
+
+                case 1:
+
+                    Console.WriteLine("你遇到了一户人家，你需要花费两个袋子，是否要偷，y or n");
+
+                    string s1 = Console.ReadLine();
+
+                    while (true)
+
+                    {
+
+                        if (s1 == "y" && bag >= 2)
+
+                        {
+
+                            See("你成功了");
+
+                            money += 100;
+
+                            buttle += 5;
+
+                            bag -= 2;
+
+                            return;
+
+                        }
+
+                        else if (s1 == "y" && bag < 2)
+
+                        {
+
+                            See("你没有袋子了");
+
+                            return;
+
+                        }
+
+                        else if (s1 == "n")
+
+                            break;
+
+                        else
+
+                            See("输入有误");
+
+
+
+                    }
+
+
+
+                    break;
+
+                case 2:
+
+
+
+                    break;
+
+            }
+
+        }
+
+        private static void Model21(ref int money, ref int bank, ref int friend)
+
+        {
+
+        }
+
+        private static void Model22()
+
+        {
+
+        }
+
+
+
+        static void Main(string[] args)
+
+        {
+
+            while (true)
+
+            {
+
+                Console.WriteLine("请输入姓名");
+
+                string Name = Console.ReadLine();
+
+                Console.WriteLine("你好{0}", Name);
+
+                while (true)
+
+                {
+
+                    Console.WriteLine("开始请输入 s 帮助请按 t");
+
+                    string q1 = Console.ReadLine();
+
+                    if (q1 == "s")
+
+                    {
+
+                        Game();
+
+                        return;
+
+                    }
+
+                    else if (q1 == "t")
+
+                    {
+
+                        Tell();
+
+                        return;
+
+                    }
+
+                    else
+
+                    {
+
+                        Console.WriteLine("输入有误");
+
+                        Console.ReadLine();
+
+
+
+                    }
+
+
+
+                }
+
+                Console.WriteLine("还玩么 y or n");
+
+               string w2= Console.ReadLine();
+
+                if (w2 == "y")
+
+                    continue;
+
+                else if (w2 == "n")
+
+                    break;
+
+                else
+
+                {
+
+                    See("输入错误");
+
+                }
+
+
+
+            }
+
+
+
+
+
+        }
+
+
+
+        private static void Tell()
+
+        {
+
+        }
+
+
+
+    }
+
+}
